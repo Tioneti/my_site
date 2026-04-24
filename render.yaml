@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: my_site
+    runtime: docker
+    plan: free
+    autoDeployTrigger: commit
+    healthCheckPath: /up
+    port: 80
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: DB_CONNECTION
+        value: pgsql
+      # Set these in the Render Dashboard as secrets:
+      # - APP_KEY
+      # - DB_URL (internal connection string from your Render Postgres)
